@@ -1,7 +1,11 @@
 package co.edu.uniquindio.permisosmunicipales.model.enums;
 
 public enum TipoPermiso {
-    CONSTRUCCION,
-    FUNCIONAMIENTO,
-    USO_SUELO
+    CONSTRUCCION_OBRA_NUEVA,
+    AMPLIACION,
+    MODIFICACION,
+    DEMOLICION,
+    URBANIZACION,
+    PARCELACION,
+    OTRO
 }

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.permisosmunicipales.controller.RadicarPermisoController"
+            fitToWidth="true" hbarPolicy="NEVER" styleClass="scroll-transparente">
+    <content>
+        <VBox spacing="16" style="-fx-padding: 20;">
+
+            <VBox spacing="4">
+                <Label text="Nueva radicación" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                <Label text="Verifique al ciudadano, registre la solicitud y valide los documentos antes de radicar." />
+            </VBox>
+
+            <HBox spacing="20">
+
+                <!-- Columna izquierda: secciones 1-3 -->
+                <VBox spacing="16" prefWidth="560" HBox.hgrow="ALWAYS">
+
+                    <!-- Sección 1 -->
+                    <VBox spacing="10" styleClass="card">
+                        <Label text="1. Datos del Ciudadano" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                        <Label text="Consulte el documento para cargar la información registrada." style="-fx-text-fill: #6b7280; -fx-font-size: 11px;" />
+
+                        <HBox spacing="10">
+                            <VBox spacing="4" prefWidth="180">
+                                <Label text="Tipo de documento" />
+                                <ComboBox fx:id="comboTipoDocumentoBusqueda" maxWidth="Infinity" />
+                            </VBox>
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label text="Número de documento *" />
+                                <TextField fx:id="campoNumeroDocumentoBusqueda" />
+                            </VBox>
+                            <VBox spacing="4" alignment="BOTTOM_LEFT">
+                                <Button text="Buscar" onAction="#onBuscarCiudadano" />
+                            </VBox>
+                        </HBox>
+
+                        <Label fx:id="lblErrorBusqueda" styleClass="label-error" visible="false" managed="false" />
+
+                        <VBox fx:id="panelDatosCiudadano" spacing="10" visible="false" managed="false">
+                            <HBox spacing="10">
+                                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                    <Label text="Nombres" />
+                                    <TextField fx:id="campoNombresCiudadano" editable="false" />
+                                </VBox>
+                                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                    <Label text="Apellidos" />
+                                    <TextField fx:id="campoApellidosCiudadano" editable="false" />
+                                </VBox>
+                            </HBox>
+                            <HBox spacing="10">
+                                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                    <Label text="Dirección" />
+                                    <TextField fx:id="campoDireccionCiudadano" editable="false" />
+                                </VBox>
+                                <VBox spacing="4" prefWidth="160">
+                                    <Label text="Estado · Solo lectura" />
+                                    <Label fx:id="badgeEstadoCiudadano" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Sección 2 -->
+                    <VBox fx:id="panelDatosPermiso" spacing="10" styleClass="card" visible="false" managed="false">
+                        <Label text="2. Datos del Permiso" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                        <Label text="Complete la información del trámite y la ubicación del predio." style="-fx-text-fill: #6b7280; -fx-font-size: 11px;" />
+
+                        <HBox spacing="10">
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label text="Tipo de permiso *" />
+                                <ComboBox fx:id="comboTipoPermiso" maxWidth="Infinity" onAction="#onCambioTipoPermiso" />
+                            </VBox>
+                            <VBox fx:id="contenedorOtroTipoPermiso" spacing="4" HBox.hgrow="ALWAYS" visible="false" managed="false">
+                                <Label text="Especifique el tipo de permiso *" />
+                                <TextField fx:id="campoOtroTipoPermiso" />
+                            </VBox>
+                        </HBox>
+
+                        <Label text="Dirección del predio *" />
+                        <TextField fx:id="campoDireccionPredio" />
+                        <Label text="Puede ser diferente de la dirección registrada del ciudadano." style="-fx-text-fill: #9ca3af; -fx-font-size: 11px;" />
+
+                        <Label text="Asunto *" />
+                        <TextArea fx:id="campoAsunto" wrapText="true" prefRowCount="3" />
+                    </VBox>
+
+                    <!-- Sección 3 -->
+                    <VBox fx:id="panelChecklist" spacing="10" styleClass="card" visible="false" managed="false">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="3. Checklist de Documentos" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                            <Pane HBox.hgrow="ALWAYS" />
+                            <Label fx:id="lblProgresoChecklist" style="-fx-text-fill: #6b7280; -fx-font-size: 11px;" />
+                        </HBox>
+                        <Label text="Requisitos según el tipo de permiso." style="-fx-text-fill: #6b7280; -fx-font-size: 11px;" />
+
+                        <VBox fx:id="contenedorFilasDocumentos" spacing="8" />
+
+                        <Separator />
+                        <Label text="Revisión del funcionario — RN-04" style="-fx-font-weight: bold; -fx-font-size: 12px;" />
+                        <CheckBox fx:id="checkLegiblesYCompletos" text="Documentos legibles/completos" onAction="#onCambioChecklist" />
+                        <CheckBox fx:id="checkFirmasYSellos" text="Firmas/sellos presentes" onAction="#onCambioChecklist" />
+                    </VBox>
+                </VBox>
+
+                <!-- Columna derecha: Sección 4 -->
+                <VBox fx:id="panelVerificacion" spacing="10" styleClass="card" prefWidth="380" visible="false" managed="false">
+                    <Label text="4. Verificación y Radicación" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <Label text="Resultado calculado de las validaciones." style="-fx-text-fill: #6b7280; -fx-font-size: 11px;" />
+
+                    <Label fx:id="bannerEstado" wrapText="true" style="-fx-padding: 10; -fx-background-radius: 6;" />
+
+                    <VBox fx:id="contenedorResultadosReglas" spacing="8" />
+
+                    <Label text="Observaciones" />
+                    <TextArea fx:id="campoObservaciones" wrapText="true" prefRowCount="2" />
+                    <Label text="Se incluirán en el registro de la solicitud." style="-fx-text-fill: #9ca3af; -fx-font-size: 11px;" />
+
+                    <Button fx:id="btnConfirmar" text="Confirmar Radicación" maxWidth="Infinity" onAction="#onConfirmarRadicacion" />
+                    <Button fx:id="btnVolverAVerificar" text="Volver a verificar" styleClass="button-secundario" maxWidth="Infinity" onAction="#onVolverAVerificar" visible="false" managed="false" />
+                    <Button text="Cancelar" styleClass="button-secundario" maxWidth="Infinity" onAction="#onCancelar" />
+
+                    <Label text="Fecha límite: 15 días después de la radicación." style="-fx-text-fill: #9ca3af; -fx-font-size: 11px;" wrapText="true" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </content>
+</ScrollPane>

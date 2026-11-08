@@ -1,0 +1,148 @@
+/* ===== Base ===== */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f3f4f6; /* gris claro de fondo, como el Figma */
+}
+
+/* ===== Barra superior (main.fxml) ===== */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4b5563;
+    -fx-font-size: 13px;
+    -fx-padding: 6 4;
+    -fx-cursor: hand;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: transparent;
+}
+
+.nav-button:hover {
+    -fx-text-fill: #2563eb;
+}
+
+.nav-button-activo {
+    -fx-text-fill: #2563eb;
+    -fx-font-weight: bold;
+    -fx-border-color: #2563eb;
+}
+
+/* ===== Paneles tipo "card" (formulario, tabla) ===== */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0, 0, 1);
+}
+
+/* ===== Botones ===== */
+.button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+/* Botón "Cancelar" — el fx:id btnCancelar recibe esta clase extra desde el controller,
+   o se le pone styleClass="button-secundario" directo en el FXML */
+.button-secundario {
+    -fx-background-color: white;
+    -fx-text-fill: #374151;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.button-secundario:hover {
+    -fx-background-color: #f9fafb;
+}
+
+/* Botones pequeños de acciones en la tabla (editar/eliminar) */
+.boton-accion {
+    -fx-background-color: transparent;
+    -fx-text-fill: #374151;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 2 6;
+}
+
+.boton-accion:hover {
+    -fx-background-color: #f3f4f6;
+    -fx-background-radius: 4;
+}
+
+/* ===== Campos de texto ===== */
+.text-field, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #52cfcc;
+}
+
+/* ===== Tabla ===== */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f9fafb;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #6b7280;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+
+.table-row-cell {
+    -fx-border-color: transparent transparent #f3f4f6 transparent;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #eff6ff;
+}
+
+/* ===== Badges de estado (Activo / Inactivo) ===== */
+.badge-activo {
+    -fx-background-color: #dcfce7;
+    -fx-text-fill: #16a34a;
+    -fx-background-radius: 10;
+    -fx-padding: 2 10;
+    -fx-font-size: 11px;
+}
+
+.badge-inactivo {
+    -fx-background-color: #f3f4f6;
+    -fx-text-fill: #6b7280;
+    -fx-background-radius: 10;
+    -fx-padding: 2 10;
+    -fx-font-size: 11px;
+}
+
+/* ===== Error de validación ===== */
+.label-error {
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 12px;
+}
+
+/* ==== Scroll ====*/
+.scroll-transparente, .scroll-transparente > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-transparente .scroll-bar:horizontal,
+.scroll-transparente .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}

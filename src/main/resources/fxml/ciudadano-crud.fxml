@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.permisosmunicipales.controller.CiudadanoCrudController"
+            stylesheets="@../css/styles.css">
+
+    <top>
+        <VBox spacing="10" style="-fx-padding: 20 20 10 20;">
+            <Label text="Gestión de Ciudadanos" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+            <Label text="Administra la información y mantén actualizado el registro de ciudadanos." />
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="campoBusqueda" promptText="Buscar por nombre o identificación..."
+                           HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnRegistrar" text="+ Registrar Ciudadano" onAction="#onRegistrarNuevo" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToHeight="true" hbarPolicy="AS_NEEDED" vbarPolicy="NEVER" styleClass="scroll-transparente">
+            <content>
+                <HBox spacing="20" style="-fx-padding: 0 20 20 20;">
+
+                    <!-- Panel de formulario -->
+                    <VBox spacing="10" prefWidth="320" style="-fx-background-color: white; -fx-padding: 20;">
+                        <Label fx:id="lblTituloFormulario" text="Registrar Ciudadano"
+                               style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <Label fx:id="lblSubtituloFormulario" text="Completa los datos del nuevo ciudadano." />
+
+                        <Label text="Tipo de Identificación*" />
+                        <ComboBox fx:id="comboTipoIdentificacion" maxWidth="Infinity"
+                                  onAction="#onCambioTipoIdentificacion" />
+
+                        <VBox fx:id="contenedorOtroTipo" spacing="4" managed="false" visible="false">
+                            <Label text="Otro Tipo de Identificación" />
+                            <TextField fx:id="campoOtroTipoIdentificacion" />
+                        </VBox>
+
+                        <Label text="Número de Identificación*" />
+                        <TextField fx:id="campoNumeroIdentificacion" promptText="Ej. 12345678" />
+
+                        <Label text="Nombres*" />
+                        <TextField fx:id="campoNombres" promptText="Ingresa los nombres" />
+
+                        <Label text="Apellidos*" />
+                        <TextField fx:id="campoApellidos" promptText="Ingresa los apellidos" />
+
+                        <Label text="Correo Electrónico*" />
+                        <TextField fx:id="campoEmail" promptText="nombre@correo.com" />
+
+                        <Label text="Teléfono" />
+                        <TextField fx:id="campoTelefono" promptText="Ej. 300 0000000" />
+
+                        <Label text="Dirección" />
+                        <TextField fx:id="campoDireccion" promptText="Calle, número y ciudad" />
+
+                        <Label text="Estado*" />
+                        <ComboBox fx:id="comboEstado" maxWidth="Infinity" />
+
+                        <Label fx:id="lblError" style="-fx-text-fill: #d32f2f;" wrapText="true" managed="false" visible="false" />
+
+                        <Label text="* Campos obligatorios" style="-fx-font-size: 11px; -fx-text-fill: gray;" />
+
+                        <HBox spacing="10">
+                            <Button fx:id="btnGuardar" text="Guardar" onAction="#onGuardar" defaultButton="true" />
+                            <Button fx:id="btnCancelar" text="Cancelar" onAction="#onCancelar" cancelButton="true" styleClass="button-secundario" />
+                        </HBox>
+                    </VBox>
+
+                    <!-- Panel de tabla -->
+                    <VBox spacing="10" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 20;">
+                        <Label text="Directorio de ciudadanos" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <Label text="Consulta, edita y gestiona los registros de la ciudadanía." />
+
+                        <TableView fx:id="tablaCiudadanos" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" text="ID" prefWidth="60" />
+                                <TableColumn fx:id="colIdentificacion" text="Identificación" prefWidth="140" />
+                                <TableColumn fx:id="colNombreCompleto" text="Nombre Completo" prefWidth="160" />
+                                <TableColumn fx:id="colEmail" text="Email" prefWidth="180" />
+                                <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="110" />
+                                <TableColumn fx:id="colEstado" text="Estado" prefWidth="90" />
+                                <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="100" />
+                            </columns>
+                        </TableView>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label fx:id="lblPaginacion" text="Mostrando 0-0 de 0 ciudadanos" />
+                            <Pane HBox.hgrow="ALWAYS" />
+                            <Label text="Filas por página" />
+                            <ComboBox fx:id="comboFilasPorPagina" />
+                            <Button fx:id="btnPaginaAnterior" text="&lt;" onAction="#onPaginaAnterior" />
+                            <Label fx:id="lblPaginaActual" text="1" />
+                            <Button fx:id="btnPaginaSiguiente" text="&gt;" onAction="#onPaginaSiguiente" />
+                        </HBox>
+                    </VBox>
+                </HBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

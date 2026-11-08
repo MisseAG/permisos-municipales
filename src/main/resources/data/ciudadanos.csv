@@ -1,0 +1,11 @@
+id;tipoIdentificacion;otroTipoIdentificacion;numeroIdentificacion;nombres;apellidos;email;telefono;direccion;estado
+1;CC;;1098765432;Ximena;López;ximena.gomez@mail.com;3101234567;Cra 5 #10-20;ACTIVO
+2;CC;;1098765433;Carlos;Pérez;carlos.perez@mail.com;3109876543;Calle 8 #12-34;ACTIVO
+3;CE;;123456;Mariana;López;mariana.lopez@mail.com;3112345678;Av Bolívar #45-10;ACTIVO
+4;CC;;1098765434;Jorge;Ramírez;jorge.ramirez@mail.com;3123456789;Cra 12 #5-67;INACTIVO
+5;NIT;;900123456-1;Comercial;XYZ SAS;contacto@xyz.com;3134567890;Zona Industrial Lote 3;ACTIVO
+6;CC;;1098765435;Ana;Torres;ana.torres@mail.com;3145678901;Cra 3 #9-21;ACTIVO
+7;PASAPORTE;;PA998877;John;Smith;john.smith@mail.com;3156789012;Hotel Plaza Hab 204;ACTIVO
+8;CC;;1098765436;Pedro;Martínez;pedro.martinez@mail.com;3167890123;Calle 15 #22-11;INACTIVO
+9;CC;;1098765437;Diana;Rojas;diana.rojas@mail.com;3178901234;Cra 7 #14-30;ACTIVO
+10;OTRO;Tarjeta de identidad;1098765438;Sofía;Castaño;sofia.castano@mail.com;3189012345;Calle 20 #8-15;ACTIVO

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.permisosmunicipales.controller.PermisosListadoController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <Label text="Permisos Radicados" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+    <Label text="Consulta de solo lectura — para radicar uno nuevo, use Radicación de Permisos." />
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="campoBusqueda" promptText="Buscar por radicado o identificación del ciudadano..."
+                   HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <VBox styleClass="card" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tablaPermisos" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colRadicado" text="N° Radicado" prefWidth="140" />
+                <TableColumn fx:id="colCiudadano" text="Ciudadano" prefWidth="180" />
+                <TableColumn fx:id="colIdentificacion" text="Identificación" prefWidth="130" />
+                <TableColumn fx:id="colTipoPermiso" text="Tipo de Permiso" prefWidth="170" />
+                <TableColumn fx:id="colFechaRadicacion" text="Fecha Radicación" prefWidth="130" />
+                <TableColumn fx:id="colFechaLimite" text="Fecha Límite" prefWidth="130" />
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="110" />
+            </columns>
+        </TableView>
+    </VBox>
+
+    <Label fx:id="lblTotal" style="-fx-text-fill: #6b7280; -fx-font-size: 11px;" />
+</VBox>
